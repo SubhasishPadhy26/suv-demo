@@ -1,2 +1,138 @@
-# suv-demo
-This is my first Git repository
+// 1. Write a JavaScript function calculateDiscountedPrice that takes the original price and a discount percentage as arguments. It should return the final price after applying the discount. If no discount is provided, assume it to be 10%. Ensure the function handles invalid inputs (e.g., negative prices or discount percentages greater than 100) gracefully.
+
+function calculateDiscountedPrice(price, discount = 10) {
+    if (price < 0 || discount < 0 || discount > 100) {
+        return "Invalid input. Please provide valid price and discount values.";
+    }
+    const discountedPrice = price - (price * discount) / 100;
+    return discountedPrice.toFixed(2);
+}
+
+
+//2.Write a program using a for loop to print all numbers between 1 and 100 that are divisible by either 3 or 5 but not both. Avoid using nested conditions inside the loop.
+
+for (let i = 1; i <= 100; i++) {
+    if ((i % 3 === 0 || i % 5 === 0) && !(i % 3 === 0 && i % 5 === 0)) {
+        console.log(i);
+    }
+}
+
+
+//3. Create a simple webpage with a button and an empty <div>. Write JavaScript code to add an event listener to the button such that, when clicked, it fetches the current date and time and displays it in the <div>. The date should be formatted as DD-MM-YYYY HH:MM:SS.
+
+document.getElementById("showDateTime").addEventListener("click", () => {
+    const now = new Date();
+    const formattedDate = ${now.getDate().toString().padStart(2, '0')}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getFullYear()} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')};
+    document.getElementById("output").innerText = formattedDate;
+});
+
+
+
+
+//4.Write a script that listens for keypress events on an input field. Every time the user types, the text should appear live in reverse order inside a <p> tag below the input field.
+
+const inputField = document.getElementById("textInput");
+const reversedText = document.getElementById("reversedText");
+
+inputField.addEventListener("input", () => {
+    const text = inputField.value;
+    reversedText.textContent = text.split("").reverse().join("");
+});
+
+
+
+
+
+// 5 .Create a function getUniqueElements that takes two arrays as arguments and returns an array of elements that are present in only one of the arrays (not both). Avoid using nested loops and ensure the function works efficiently for large arrays.
+function getUniqueElements(arr1, arr2) {
+    const set1 = new Set(arr1);
+    const set2 = new Set(arr2);
+
+    const unique = [
+        ...arr1.filter(item => !set2.has(item)),
+        ...arr2.filter(item => !set1.has(item))
+    ];
+
+
+
+// 6.Write a function mergeEmployeeDetails that takes two objects as arguments. The first object contains basic details about an employee (name, age, and ID), and the second contains additional details (department, designation, and salary). The function should merge these objects and return a new object containing all the information. If a property exists in both, the second object’s value should take precedence.
+
+
+function mergeEmployeeDetails(employee1, employee2) {
+    return { ...employee1, ...employee2 };
+}
+
+// Example
+const employeeBasic = { name: "John Doe", age: 30, id: 101 };
+const employeeAdditional = { department: "IT", designation: "Developer", salary: 75000 };
+
+const mergedDetails = mergeEmployeeDetails(employeeBasic, employeeAdditional);
+console.log(mergedDetails);
+
+
+
+
+//7.Write a function isPrime that takes a number as input and returns true if the number is prime and false otherwise. Ensure the function is optimized to check divisors only up to the square root of the number.
+
+
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+}
+
+
+
+
+//8.Create a function cloneObject that takes an object as input and returns a deep copy of that object. Test it with a nested object to ensure that modifying the copy doesn’t affect the original object.
+
+
+function cloneObject(obj) {
+    return JSON.parse(JSON.stringify(obj));
+}
+
+
+const original = { name: "Alice", details: { age: 25, city: "New York" } };
+const copy = cloneObject(original);
+copy.details.city = "Los Angeles";
+
+console.log(original); // { name: "Alice", details: { age: 25, city: "New York" } }
+console.log(copy);     // { name: "Alice", details: { age: 25, city: "Los Angeles" } }
+
+
+
+
+//9.Write a function findLongestWord that takes a sentence as input and returns the longest word in the sentence. If there are multiple words of the same length, return the first one.
+
+function findLongestWord(sentence) {
+    const words = sentence.split(" ");
+    let longestWord = "";
+
+    for (const word of words) {
+        if (word.length > longestWord.length) {
+            longestWord = word;
+        }
+    }
+    return longestWord;
+}
+
+
+
+
+
+//10.Write a higher-order function operate that takes two numbers and a callback function. The callback determines the operation to be performed (e.g., addition, subtraction, multiplication, or division). Demonstrate how to use the function with multiple operations.
+function operate(a, b, callback) {
+    return callback(a, b);
+}
+
+// Example
+const add = (x, y) => x + y;
+const subtract = (x, y) => x - y;
+const multiply = (x, y) => x * y;
+const divide = (x, y) => (y !== 0 ? x / y : "Cannot divide by zero");
+
+console.log(operate(10, 5, add));        // 15
+console.log(operate(10, 5, subtract));   // 5
+console.log(operate(10, 5, multiply));   // 50
