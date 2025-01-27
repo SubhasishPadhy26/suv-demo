@@ -1,2 +1,120 @@
-// FUNCTIONS
-console.log("2")
+
+// 1.wap to take array of numbers as input and returns new array containing only een numbers from og array.
+function filterEvenNumbers(arr) {
+  
+}
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+const evenNumbers = filterEvenNumbers(numbers);
+console.log(evenNumbers); 
+
+// 2.Reverse a string
+
+
+function reverseString(str) {
+  return str.split('').reverse().join('');
+}
+
+console.log(reverseString("hello"));  
+
+// 3.Write a function updatePersonInfo(obj, key, value) that updates the value of a given property (key) in the obj object with the provided value.if propert doesnt exist i
+should add to object.
+
+
+function updatePersonInfo(obj, key, value) {
+  obj[key] = value;
+}
+
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30
+};
+
+updatePersonInfo(person, "age", 31); // Updates age to 31
+updatePersonInfo(person, "city", "New York"); // Adds city: "New York"
+
+console.log(person);
+
+// 4.Write that takes string as input and returns number of vowels.
+
+
+function countVowels(str) {
+  let count = 0;
+  const vowels = "aeiouAEIOU";  // Both uppercase and lowercase vowels
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.includes(str[i])) {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(countVowels("Hello World"));  
+console.log(countVowels("JavaScript")); 
+
+//5.Write a function sumNumbers(arr) that takes an array of numbers as input and returns the sum of all the numbers in the array.
+
+function sumNumbers(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}
+
+console.log(sumNumbers([1, 2, 3, 4]));  
+console.log(sumNumbers([5, 5, 5]));
+
+//6. Write a function sumNumbers(arr) that takes an array of numbers as input and returns the sum of all the numbers in the array.
+
+
+function sumNumbers(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}
+
+console.log(sumNumbers([1, 2, 3, 4]));  
+console.log(sumNumbers([5, 5, 5]));   
+
+// 7. Write a function isPalindrome(str) that checks if the given string is a palindrome
+
+
+
+function isPalindrome(str) {
+  const reversedStr = str.split('').reverse().join('');
+  return str === reversedStr;
+}
+
+console.log(isPalindrome("madam"));  
+console.log(isPalindrome("hello"));  
+
+// 8.Write JavaScript to change the background color of a <div> when it is clicked.
+
+
+document.querySelector('div').addEventListener('click', function() {
+    this.style.backgroundColor = 'blue';
+});
+
+// 9. Write JavaScript to create a list (<ul>) dynamically, add three list items (<li>), and append it to the <body>.
+
+
+const ul = document.createElement('ul');
+['Item 1', 'Item 2', 'Item 3'].forEach(text => {
+    const li = document.createElement('li');
+    li.textContent = text;
+    ul.appendChild(li);
+});
+document.body.appendChild(ul);
+
+
+//  10.Write JavaScript to log the mouse coordinates (X and Y) to the console whenever the mouse moves over the <body>.
+
+
+
+document.body.addEventListener('mousemove', function(event) {
+    console.log(X: ${event.clientX}, Y: ${event.clientY});
+});
