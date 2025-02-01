@@ -1,1 +1,124 @@
-console.log("subhasish")
+//1. WAP to find average
+function calculateAverage(inputArray) {
+    // Only array is allow, strings, number, boolean etc are not allowed
+    // All elements of an array should be positive integer
+    console.log(inputArray);
+    let sumOfElements = 0;
+    for(let i = 0; i < inputArray.length; i++) {
+        sumOfElements += inputArray[i];
+    }
+
+    let result = sumOfElements / inputArray.length;
+
+    return result;
+}
+
+console.log("[1, 2, 4]", calculateAverage([1, 2, 4]));
+
+//2.WAP to find simple interest
+
+function calculateSimpleInterest(principalAmount, 
+    interstRateYearly, durationInYears) {
+    // Add validation that principalAmount, interstRateYearly, durationInYears should be numbers
+    let multiplicationResult = principalAmount * interstRateYearly * durationInYears;
+    let simpleInterest = multiplicationResult / 100;
+    simpleInterest = simpleInterest.toFixed(2);
+    return simpleInterest;
+}
+
+console.log("1000, 5, 1", calculateSimpleInterest(1000, 5, 1));
+
+
+//3..WAP to check if it is a prime number
+
+function isPrime(inputNumber) {
+    let result = true;
+    for(let i = 2; i < inputNumber; i++) {
+        //console.log(inputNumber, '%', i, inputNumber % i);
+        if(inputNumber % i === 0) {
+            result = false;
+            break;
+        }
+    }
+
+    return result;
+}
+console.log('5', isPrime(5));
+
+//4 WAP to count number of words in sentence.
+function countWords(sentence) {
+    console.log('Before trim', sentence);
+    sentence = sentence.trim();
+    console.log('After trim', sentence);
+    const splittedSentence = 
+    sentence.split(' ');
+    console.log(splittedSentence);
+    const nonEmptyElements = splittedSentence.filter((element) => element != '');
+    console.log("nonEmptyElements", nonEmptyElements)
+    return nonEmptyElements.length;
+}
+
+console.log("This is a sentence", countWords("This is a sentence"));
+
+//5. WAP to swap without thir var
+
+let a = 5;
+let b = 6;
+
+console.log(`Value before swapping a=${a} and b=${b}`);
+a = a + b; // 11
+b = a - b; // 11 - 6 = 5
+a = a - b; // 11 - 5 = 6
+
+console.log(`Value after swapping a=${a} and b=${b}`);
+
+//6. Fizzbuzz chalenge
+function fizzBuzz(inputNumber) {
+    // Add validation that input number should be
+    // a positive integer
+
+    for(let i = 1; i <= inputNumber; i++) {
+        
+        if(i % 3 === 0 && i % 5 === 0) {
+            console.log("Fizz Buzz");
+        }
+        else if(i % 3 === 0) {
+            console.log("Fizz");
+        }
+        else if(i % 5 === 0) {
+            console.log("Buzz");
+        }
+        else {
+            console.log(i);
+        }
+        
+    }
+}
+
+fizzBuzz(36);
+
+//7.WAP to create number pyramid
+
+function generatePyramid(inputNumber) {
+    // Validate that input number is a positive integer
+    for(let i = 1; i <= inputNumber; i++) {
+        let lineContent = "";
+        for(let space = 1; space <= inputNumber - i; space++)
+        {
+            lineContent = lineContent + " ";
+        }
+
+        for(let count = 1; count <= i; count++) {
+            lineContent = lineContent + count;
+        }
+
+        for(let reverseCount = i - 1; reverseCount >= 1; reverseCount--) {
+            lineContent = lineContent + reverseCount;
+        }
+
+        console.log(lineContent);
+
+    }
+}
+
+generatePyramid(10);
