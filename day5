@@ -1,1 +1,188 @@
+// 1.WAP that takes two arrays of objects and merges them based on common key.
 
+let ask = [
+    { id: 1, name: "Alice" },
+    { id: 2, name: "Bob" },
+    { id: 3, name: "Charlie" },
+    { id: 4, name: "David" },
+    { id: 5, name: "Eve" },
+    { id: 6, name: "Frank" }
+];
+
+let array1 = []; 
+let index = 0;  
+for (let i = 0; i < ask.length; i++) {
+    if (ask.length > 5) {
+        array1[index] = ask[i]; 
+        index++;  
+    }
+}
+
+console.log(array1);
+
+
+let ask2 = [
+    { id: 7, name: "Alana" },
+    { id: 8, name: "Bobby" },
+    { id: 9, name: "Charles" },
+    { id: 10, name: "Dennis" },
+    { id: 11, name: "maity" },
+    { id: 12, name: "daniel" }
+];
+
+let array2 = []; 
+let index2 = 0;  
+for (let i = 0; i < ask.length; i++) {
+    if (ask2.length > 5) {
+        array2[index] = ask2[i]; 
+        index++;  
+    }
+}
+
+//console.log(array2)
+
+array3=array1.concat(array2)
+
+console.log(array3)
+
+//2.WAP to  check alphabeautical order
+
+
+console.log('a'.charCodeAt(0));
+console.log('b'.charCodeAt(0));
+console.log('z'.charCodeAt(0));
+
+console.log('A'.charCodeAt(0));
+console.log('Z'.charCodeAt(0));
+
+console.log('a' < 'b'); // true
+console.log('b' < 'a'); // false
+
+function isStringInAlphabeticOrder(inputString) {
+    inputString = inputString.replace(/ /g, '');
+    inputString = inputString.toLowerCase();
+    for(let i = 0; i < inputString.length - 1; i++) {
+        if(inputString[i] > inputString[i + 1]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+console.log("acgz", isStringInAlphabeticOrder("acgz"));
+
+//3.WAP to print array of duplicates
+
+let arr1 = ['1', '2', '3', '3', '4'];
+let wer1, wer2;  // Declaring outside the loop
+let empty = [];
+
+for (let i = 0; i < arr1.length - 1; i++) {
+    wer1 = arr1[i];      // Current element
+    wer2 = arr1[i + 1];  // Next element
+
+    if (wer1 < wer2) {
+        console.log("true");
+    } else if (wer1 === wer2) {
+        empty.push(wer1);  // Push duplicate value to the empty array
+    }
+}
+
+console.log(empty);  // Output the array of duplicates
+
+//4. WAP to  compose 2 functions f and g and returns new function that applies g first and then f to the result.
+
+
+const compose = (f, g) => (x) => f(g(x));
+
+
+const add2 = (x) => x + 2;
+const multiplyBy3 = (x) => x * 3;
+
+
+const addThenMultiply = compose(multiplyBy3, add2);
+console.log(addThenMultiply(4)); // Output: 18 (first adds 2, then multiplies by 3)
+
+// 5. WAP to check whether number is a perfect number
+
+function sumOfDivisors(n) {
+    let divisors = [];
+    let sum = 0;
+
+    for (let i = 1; i < n; i++) {
+        if (n % i === 0) {
+            divisors.push(i);
+            sum += i;
+        }
+    }
+
+    console.log("Divisors of " + n + ": " + divisors);
+    console.log("Sum of divisors: " + sum);
+
+    return sum;
+}
+
+let num = 28;
+let result = sumOfDivisors(num);
+
+if (result === num) {
+    console.log(num + " is a perfect number.");
+} else {
+    console.log(num + " is not a perfect number.");
+}
+
+//6. WAP to solve transpose of matrix
+
+function pairAsSingleColumn(arr1, arr2) {
+    let result = [];
+
+    let minLength = Math.min(arr1.length, arr2.length)
+
+    for (let i = 0; i < minLength; i++) {
+        result.push([arr1[i], arr2[i]]); 
+    }
+
+    return result;
+}
+
+
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+
+let result = pairAsSingleColumn(arr1, arr2);
+console.log(result);
+
+//7. WAP to check whether given password is strong or not
+function isStrongPassword(password) {
+    let lowercase = 'abcdefghijklmnopqrstuvwxyz';
+    let uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let digits = '0123456789';
+    let specialCharacters = '@#$%^&*!?';
+
+    let hasLower = false;
+    let hasUpper = false;
+    let hasDigit = false;
+    let hasSpecial = false;
+
+    if (password.length < 8) {
+        return "Bad password: Must be at least 8 characters long";
+    }
+
+    for (let i = 0; i < password.length; i++) {
+        let char = password[i];
+        if (lowercase.includes(char)) hasLower = true;
+        if (uppercase.includes(char)) hasUpper = true;
+        if (digits.includes(char)) hasDigit = true;
+        if (specialCharacters.includes(char)) hasSpecial = true;
+    }
+
+    if (hasLower && hasUpper && hasDigit && hasSpecial) {
+        return "Strong password!";
+    } else {
+        return "Bad password: Does not meet requirements";
+    }
+}
+
+let password = "Password123@";
+console.log(isStrongPassword(password));
