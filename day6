@@ -33,3 +33,98 @@ for (let i = 0; i < numberOfDice; i++) {
 }
 
 console.log("Dice rolls: " + output);
+
+
+// 3.WAP to build rock paper scissors game
+
+function playRockPaperScissors(playerChoice) {
+    const choices = ["rock", "paper", "scissors"];
+    const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+    console.log(Player: ${playerChoice});
+    console.log(Computer: ${computerChoice});
+
+    if (playerChoice === computerChoice) {
+        console.log("It's a tie!");
+    } else if (
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "paper" && computerChoice === "rock") ||
+        (playerChoice === "scissors" && computerChoice === "paper")
+    ) {
+        console.log("You win!");
+    } else {
+        console.log("You lose!");
+    }
+}
+
+
+playRockPaperScissors("rock");
+
+// 4. WAP to make functional calculator
+function calculator(num1, num2, operator) {
+    switch (operator) {
+        case "+":
+            return num1 + num2;
+        case "-":
+            return num1 - num2;
+        case "*":
+            return num1 * num2;
+        case "/":
+            return num2 !== 0 ? num1 / num2 : "Cannot divide by zero";
+        default:
+            return "Invalid operator";
+    }
+}
+
+
+console.log(calculator(10, 5, "+")); // 15
+console.log(calculator(10, 5, "-")); // 5
+console.log(calculator(10, 5, "*")); // 50
+console.log(calculator(10, 5, "/")); // 2
+
+
+
+//5. WAP to generaye random numbers from 1 to 10
+
+function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+
+    console.log(${hours}:${minutes}:${seconds});
+}
+
+setInterval(updateClock, 1000);
+updateClock(); // Call once to display immediately
+
+//6. WAP to fizzbuzz
+function fizzBuzz() {
+    for (let i = 1; i <= 100; i++) {
+        if (i % 3 === 0 && i % 5 === 0) console.log("FizzBuzz");
+        else if (i % 3 === 0) console.log("Fizz");
+        else if (i % 5 === 0) console.log("Buzz");
+        else console.log(i);
+    }
+}
+
+fizzBuzz();
+// 7. WAP to2 nd larest element in an array
+function secondLargest(arr) {
+    const uniqueArr = [...new Set(arr)].sort((a, b) => b - a); // Remove duplicates and sort
+    return uniqueArr[1] || "Not enough elements";
+}
+
+
+console.log(secondLargest([10, 20, 30, 40]));
+console.log(secondLargest([10]));
+
+//8. WAP to flatten nested array
+function flattenArray(arr) {
+    return arr.flat(Infinity);
+}
+
+
+console.log(flattenArray([1, [2, [3, [4, 5]]]])); // [1, 2, 3, 4, 5]
+
+
